@@ -138,30 +138,6 @@ void loop() {
 
   }
 
-  // if you get a connection, report back via serial:
-  char server[] = "emoncms.org"; 
-  if (client.connect(server, 80)) {
-    Serial.println("connected");
-    // Make a HTTP request:
-
-    String request = String("/input/post.json?json={temperature:" + String(temperature) +"}&apikey=f80a7b76be9419678411b5fca47dae0e");
-    Serial.print(request);
-    
-    client.println("POST "+request+" HTTP/1.1");
-    client.println("Host: emoncms.org");
-    client.println("Connection: close");
-    client.println();
-  
-  } else {
-    // if you didn't get a connection to the server:
-    Serial.println("connection failed");
-  }
-
-  if (client.available()) {
-    char c = client.read();
-    Serial.print(c);
-  }
-
   delay(5000);
 }
 
