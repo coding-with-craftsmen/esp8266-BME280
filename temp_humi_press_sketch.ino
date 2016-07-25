@@ -130,7 +130,7 @@ void loop() {
   Serial.print(humidity);
   Serial.println(" %");
   Serial.print("Publish Humidity: ");
-  if (! pressure_topic.publish(humidity)) {
+  if (! humidity_topic.publish(humidity)) {
     Serial.println("Failed");
 
   } else {
